@@ -29,10 +29,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 namespace System.Runtime.CompilerServices
 {
 	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, Inherited = false)]
-	public sealed class InterpolatedStringHandlerAttribute : Attribute { }
+	internal sealed class InterpolatedStringHandlerAttribute : Attribute { }
 
 	[AttributeUsage(AttributeTargets.Parameter)]
-	public sealed class InterpolatedStringHandlerArgumentAttribute : Attribute
+	internal sealed class InterpolatedStringHandlerArgumentAttribute : Attribute
 	{
 		public InterpolatedStringHandlerArgumentAttribute(string argument) => Arguments = new string[] { argument};
 
