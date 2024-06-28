@@ -27,6 +27,7 @@ jobs:
       uses: NuGet/setup-nuget@v2.0.0
     - name: Update version in .nuspec  
       uses: vers-one/dotnet-project-version-updater@v1.6
+      with:
         file: "**/*.nuspec"
         version: ${{ env.VERSION }}
     - name: Restore
