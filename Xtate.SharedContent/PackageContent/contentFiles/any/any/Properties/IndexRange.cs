@@ -20,6 +20,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma warning disable IDE0079 // Remove unnecessary suppression
 #pragma warning disable IDE0005 // Using directive is unnecessary
+#pragma warning disable IDE0290 // Use primary constructor
+#pragma warning disable IDE0090 // Use 'new(...)'
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 using System.Runtime.CompilerServices;
@@ -44,9 +46,9 @@ namespace System
 
 		private Index(int value) => _value = value;
 
-		public static Index Start => new(0);
+		public static Index Start => new Index(0);
 
-		public static Index End => new(~0);
+		public static Index End => new Index(~0);
 
 		public int Value => _value < 0 ? ~_value : _value;
 
@@ -87,13 +89,19 @@ namespace System
 	}
 
 	[UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-	internal readonly struct Range(Index start, Index end) : IEquatable<Range>
+	internal readonly struct Range : IEquatable<Range>
 	{
-		public Index Start { get; } = start;
+		public Range(Index start, Index end)
+		{
+			Start = start;
+			End = end;
+		}
 
-		public Index End { get; } = end;
+		public Index Start { get; }
 
-		public static Range All => new(Index.Start, Index.End);
+		public Index End { get; }
+
+		public static Range All => new Range(Index.Start, Index.End);
 
 	#region Interface IEquatable<Range>
 
@@ -107,9 +115,9 @@ namespace System
 
 		public override string ToString() => Start + @".." + End;
 
-		public static Range StartAt(Index start) => new(start, Index.End);
+		public static Range StartAt(Index start) => new Range(start, Index.End);
 
-		public static Range EndAt(Index end) => new(Index.Start, end);
+		public static Range EndAt(Index end) => new Range(Index.Start, end);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public (int Offset, int Length) GetOffsetAndLength(int length)

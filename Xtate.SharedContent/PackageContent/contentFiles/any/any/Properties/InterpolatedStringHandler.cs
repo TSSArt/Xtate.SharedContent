@@ -20,6 +20,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma warning disable IDE0079 // Remove unnecessary suppression
 #pragma warning disable IDE0005 // Using directive is unnecessary
+#pragma warning disable IDE0290 // Use primary constructor
+#pragma warning disable IDE0300 // Simplify collection initialization
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 #if !NET6_0_OR_GREATER
@@ -27,12 +29,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 namespace System.Runtime.CompilerServices
 {
 	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, Inherited = false)]
-	public sealed class InterpolatedStringHandlerAttribute : Attribute;
+	public sealed class InterpolatedStringHandlerAttribute : Attribute { }
 
 	[AttributeUsage(AttributeTargets.Parameter)]
 	public sealed class InterpolatedStringHandlerArgumentAttribute : Attribute
 	{
-		public InterpolatedStringHandlerArgumentAttribute(string argument) => Arguments = [argument];
+		public InterpolatedStringHandlerArgumentAttribute(string argument) => Arguments = new string[] { argument};
 
 		public InterpolatedStringHandlerArgumentAttribute(params string[] arguments) => Arguments = arguments;
 

@@ -20,26 +20,30 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma warning disable IDE0079 // Remove unnecessary suppression
 #pragma warning disable IDE0005 // Using directive is unnecessary
+#pragma warning disable IDE0290 // Use primary constructor
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 #if !NET7_0_OR_GREATER
 namespace System.Runtime.CompilerServices
 {
 	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Field | AttributeTargets.Property)]
-	internal sealed class RequiredMemberAttribute : Attribute;
+	internal sealed class RequiredMemberAttribute : Attribute { }
 
 	[AttributeUsage(AttributeTargets.All, AllowMultiple = true, Inherited = false)]
-	internal sealed class CompilerFeatureRequiredAttribute(string featureName) : Attribute
+	internal sealed class CompilerFeatureRequiredAttribute : Attribute
 	{
-		public string FeatureName { get; } = featureName;
+		public CompilerFeatureRequiredAttribute(string featureName)
+		{
+			FeatureName = featureName;
+		}
 
-		public string? Language { get; init; }
+		public string FeatureName { get; }
 	}
 }
 
 namespace System.Diagnostics.CodeAnalysis
 {
 	[AttributeUsage(AttributeTargets.Constructor)]
-	internal sealed class SetsRequiredMembersAttribute : Attribute;
+	internal sealed class SetsRequiredMembersAttribute : Attribute { }
 }
 #endif

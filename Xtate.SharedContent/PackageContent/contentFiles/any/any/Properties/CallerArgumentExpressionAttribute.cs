@@ -21,6 +21,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #nullable disable
 #pragma warning disable IDE0079 // Remove unnecessary suppression
 #pragma warning disable IDE0005 // Using directive is unnecessary
+#pragma warning disable IDE0290 // Use primary constructor
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 using System.Diagnostics.CodeAnalysis;
@@ -31,9 +32,14 @@ namespace System.Runtime.CompilerServices
 {
 	[AttributeUsage(AttributeTargets.Parameter)]
 	[ExcludeFromCodeCoverage]
-	internal sealed class CallerArgumentExpressionAttribute(string parameterName) : Attribute
+	internal sealed class CallerArgumentExpressionAttribute : Attribute
 	{
-		[UsedImplicitly] public string ParameterName { get; } = parameterName;
+		public CallerArgumentExpressionAttribute(string parameterName)
+		{
+			ParameterName = parameterName;
+		}
+
+		[UsedImplicitly] public string ParameterName { get; }
 	}
 }
 #endif

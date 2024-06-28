@@ -18,6 +18,10 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+#pragma warning disable IDE0079 // Remove unnecessary suppression
+#pragma warning disable IDE0005 // Using directive is unnecessary
+#pragma warning disable IDE0290 // Use primary constructor
+
 #define INTERNAL_NULLABLE_ATTRIBUTES
 
 #if NETSTANDARD2_0 || NETCOREAPP2_0 || NETCOREAPP2_1 || NETCOREAPP2_2 || NET45 || NET451 || NET452 || NET6 || NET461 || NET462 || NET47 || NET471 || NET472 || NET48
@@ -71,9 +75,6 @@ namespace System.Diagnostics.CodeAnalysis
 	///     corresponding type disallows it.
 	/// </summary>
 	/// <remarks>Initializes the attribute with the specified return value condition.</remarks>
-	/// <param name="returnValue">
-	///     The return value condition. If the method returns this value, the associated parameter may be null.
-	/// </param>
 	[AttributeUsage(AttributeTargets.Parameter)]
 	[ExcludeFromCodeCoverage]
 #if INTERNAL_NULLABLE_ATTRIBUTES
@@ -81,10 +82,23 @@ namespace System.Diagnostics.CodeAnalysis
 #else
     public
 #endif
-		sealed class MaybeNullWhenAttribute(bool returnValue) : Attribute
+		sealed class MaybeNullWhenAttribute : Attribute
 	{
+		/// <summary>
+		///     Specifies that when a method returns <see cref="ReturnValue" />, the parameter may be null even if the
+		///     corresponding type disallows it.
+		/// </summary>
+		/// <remarks>Initializes the attribute with the specified return value condition.</remarks>
+		/// <param name="returnValue">
+		///     The return value condition. If the method returns this value, the associated parameter may be null.
+		/// </param>
+		public MaybeNullWhenAttribute(bool returnValue)
+		{
+			ReturnValue = returnValue;
+		}
+
 		/// <summary>Gets the return value condition.</summary>
-		public bool ReturnValue { get; } = returnValue;
+		public bool ReturnValue { get; }
 	}
 
 	/// <summary>
@@ -92,9 +106,6 @@ namespace System.Diagnostics.CodeAnalysis
 	///     corresponding type allows it.
 	/// </summary>
 	/// <remarks>Initializes the attribute with the specified return value condition.</remarks>
-	/// <param name="returnValue">
-	///     The return value condition. If the method returns this value, the associated parameter will not be null.
-	/// </param>
 	[AttributeUsage(AttributeTargets.Parameter)]
 	[ExcludeFromCodeCoverage]
 #if INTERNAL_NULLABLE_ATTRIBUTES
@@ -102,17 +113,27 @@ namespace System.Diagnostics.CodeAnalysis
 #else
     public
 #endif
-		sealed class NotNullWhenAttribute(bool returnValue) : Attribute
+		sealed class NotNullWhenAttribute : Attribute
 	{
+		/// <summary>
+		///     Specifies that when a method returns <see cref="ReturnValue" />, the parameter will not be null even if the
+		///     corresponding type allows it.
+		/// </summary>
+		/// <remarks>Initializes the attribute with the specified return value condition.</remarks>
+		/// <param name="returnValue">
+		///     The return value condition. If the method returns this value, the associated parameter will not be null.
+		/// </param>
+		public NotNullWhenAttribute(bool returnValue)
+		{
+			ReturnValue = returnValue;
+		}
+
 		/// <summary>Gets the return value condition.</summary>
-		public bool ReturnValue { get; } = returnValue;
+		public bool ReturnValue { get; }
 	}
 
 	/// <summary>Specifies that the output will be non-null if the named parameter is non-null.</summary>
 	/// <remarks>Initializes the attribute with the associated parameter name.</remarks>
-	/// <param name="parameterName">
-	///     The associated parameter name.  The output will be non-null if the argument to the parameter specified is non-null.
-	/// </param>
 	[AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.ReturnValue, AllowMultiple = true)]
 	[ExcludeFromCodeCoverage]
 #if INTERNAL_NULLABLE_ATTRIBUTES
@@ -120,10 +141,20 @@ namespace System.Diagnostics.CodeAnalysis
 #else
     public
 #endif
-		sealed class NotNullIfNotNullAttribute(string parameterName) : Attribute
+		sealed class NotNullIfNotNullAttribute : Attribute
 	{
+		/// <summary>Specifies that the output will be non-null if the named parameter is non-null.</summary>
+		/// <remarks>Initializes the attribute with the associated parameter name.</remarks>
+		/// <param name="parameterName">
+		///     The associated parameter name.  The output will be non-null if the argument to the parameter specified is non-null.
+		/// </param>
+		public NotNullIfNotNullAttribute(string parameterName)
+		{
+			ParameterName = parameterName;
+		}
+
 		/// <summary>Gets the associated parameter name.</summary>
-		public string ParameterName { get; } = parameterName;
+		public string ParameterName { get; }
 	}
 
 	/// <summary>Applied to a method that will never return under any circumstance.</summary>
@@ -138,11 +169,6 @@ namespace System.Diagnostics.CodeAnalysis
 
 	/// <summary>Specifies that the method will not return if the associated Boolean parameter is passed the specified value.</summary>
 	/// <remarks>Initializes the attribute with the specified parameter value.</remarks>
-	/// <param name="parameterValue">
-	///     The condition parameter value. Code after the method will be considered unreachable by diagnostics if the argument
-	///     to
-	///     the associated parameter matches this value.
-	/// </param>
 	[AttributeUsage(AttributeTargets.Parameter)]
 	[ExcludeFromCodeCoverage]
 #if INTERNAL_NULLABLE_ATTRIBUTES
@@ -150,10 +176,22 @@ namespace System.Diagnostics.CodeAnalysis
 #else
     public
 #endif
-		sealed class DoesNotReturnIfAttribute(bool parameterValue) : Attribute
+		sealed class DoesNotReturnIfAttribute : Attribute
 	{
+		/// <summary>Specifies that the method will not return if the associated Boolean parameter is passed the specified value.</summary>
+		/// <remarks>Initializes the attribute with the specified parameter value.</remarks>
+		/// <param name="parameterValue">
+		///     The condition parameter value. Code after the method will be considered unreachable by diagnostics if the argument
+		///     to
+		///     the associated parameter matches this value.
+		/// </param>
+		public DoesNotReturnIfAttribute(bool parameterValue)
+		{
+			ParameterValue = parameterValue;
+		}
+
 		/// <summary>Gets the condition parameter value.</summary>
-		public bool ParameterValue { get; } = parameterValue;
+		public bool ParameterValue { get; }
 	}
 }
 #endif
