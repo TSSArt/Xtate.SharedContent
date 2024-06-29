@@ -3,7 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34931.61
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xtate.SharedContent", "Xtate.SharedContent\Xtate.SharedContent.csproj", "{85560F70-52E3-4BC5-B159-86914F2B43CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xtate.SharedContent", "Xtate.SharedContent\Xtate.SharedContent.csproj", "{85560F70-52E3-4BC5-B159-86914F2B43CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{6EA1A78B-3843-483B-AB55-09498C3342F7}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		Directory.Build.props = Directory.Build.props
+		LICENSE = LICENSE
+		.github\workflows\publish.yml = .github\workflows\publish.yml
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{002D602D-DCE8-4B0A-AAD6-F3311011473B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,6 +29,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{85560F70-52E3-4BC5-B159-86914F2B43CC} = {002D602D-DCE8-4B0A-AAD6-F3311011473B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {80CC5966-9128-4F9E-964E-EBC6452216F0}
