@@ -9,7 +9,7 @@ env:
   VERSION: ${{ vars.MM_VERSION }}.${{ github.run_number }}
   CONFIGURATION: Release
 
-run-name: \[v${{ vars.MM_VERSION }}.${{ github.run_number }}\] ${{ github.event.head_commit.message }}
+run-name: "[v${{ vars.MM_VERSION }}.${{ github.run_number }}] ${{ github.event.head_commit.message }}"
 
 jobs:
   publish:
