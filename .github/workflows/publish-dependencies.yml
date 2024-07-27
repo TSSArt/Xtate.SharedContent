@@ -1,7 +1,8 @@
 name: Publish Dependencies
 
 on:
-  registry_package: [published]
+  registry_package:
+    types: [published]
   workflow_dispatch:
 
 jobs:
