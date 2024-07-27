@@ -1,7 +1,7 @@
 name: Publish Dependencies
 
 on:
-  registry_package:
+  registry_package: [published]
   workflow_dispatch:
 
 jobs:
@@ -18,6 +18,6 @@ jobs:
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: Publish
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT }}
           repo: TSSArt/${{ matrix.repo }}
           ref: main
