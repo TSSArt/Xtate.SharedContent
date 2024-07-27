@@ -1,0 +1,23 @@
+name: Publish Dependencies
+
+on:
+  registry_package:
+  workflow_dispatch:
+
+jobs:
+  trigger:
+    name: Publish ${{ matrix.repo }}
+    strategy:
+      matrix:
+        repo: ${{ env.DEPENDENT_REPOS }}
+    
+    runs-on: ubuntu-latest
+  
+    steps:
+      - name: Workflow Dispatch
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: Publish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repo: TSSArt/${{ matrix.repo }}
+          ref: main
