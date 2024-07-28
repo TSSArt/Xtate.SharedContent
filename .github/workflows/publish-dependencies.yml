@@ -10,7 +10,9 @@ jobs:
     name: Build & Publish ${{ matrix.repo }}
     strategy:
       matrix:
-        repo: ${{ vars.DEP_REPOS }}
+        repo:
+          - Xtate.IoC
+          - Xtate.Core
     
     runs-on: ubuntu-latest
   
