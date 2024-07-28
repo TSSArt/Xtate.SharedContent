@@ -2,8 +2,10 @@ name: Publish Dependencies
 
 on:
   registry_package:
-    types: [published]
   workflow_dispatch:
+
+env:
+  GITHUB_TOKEN: ${{ secrets.PAT }}
 
 jobs:
   trigger:
