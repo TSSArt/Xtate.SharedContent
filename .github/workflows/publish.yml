@@ -4,13 +4,17 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
-  
+
 env:
   VERSION: ${{ vars.XTATE_VERSION }}.${{ github.run_number }}
   CONFIGURATION: Release
 
 run-name: "[v${{ vars.XTATE_VERSION }}.${{ github.run_number }}] ${{ github.event.head_commit.message || '<Workflow Dispatch>' }}"
 
+concurrency:
+  group: Publish
+  cancel-in-progress: true
+  
 jobs:
   publish:
     name: Build & Publish
