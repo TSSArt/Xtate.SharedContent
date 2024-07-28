@@ -10,7 +10,7 @@ jobs:
     name: Build & Publish ${{ matrix.repo }}
     strategy:
       matrix:
-        repo: [${{ vars.DEP_REPOS }}]
+        repo: ${{ vars.DEP_REPOS }}
     
     runs-on: ubuntu-latest
   
