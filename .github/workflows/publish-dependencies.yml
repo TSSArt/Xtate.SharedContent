@@ -10,7 +10,8 @@ jobs:
     name: Publish ${{ matrix.repo }}
     strategy:
       matrix:
-        repo: ${{ env.DEPENDENT_REPOS }}
+        repo: 
+          - TSSArt/Xtate.IoC
     
     runs-on: ubuntu-latest
   
@@ -20,5 +21,5 @@ jobs:
         with:
           workflow: Publish
           token: ${{ secrets.PAT }}
-          repo: TSSArt/${{ matrix.repo }}
+          repo: ${{ matrix.repo }}
           ref: main
