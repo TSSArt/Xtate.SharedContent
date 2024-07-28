@@ -3,22 +3,20 @@ name: Publish Dependencies
 on:
   registry_package:
     types: [published]
-  workflow_dispatch:
 
 jobs:
   trigger:
-    name: Build & Publish ${{ matrix.repo }}
+    name: Build & Publish - ${{ matrix.repo }}
     strategy:
       matrix:
         repo:
           - Xtate.IoC
-          - Xtate.Core
     
     runs-on: ubuntu-latest
   
     steps:
       - name: Workflow Dispatch
-        uses: benc-uk/workflow-dispatch@v1
+        uses: benc-uk/workflow-dispatch@v1.2.3
         with:
           workflow: Publish
           token: ${{ secrets.XTATE_GITHUB_TOKEN }}
