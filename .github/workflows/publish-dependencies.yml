@@ -2,10 +2,8 @@ name: Publish Dependencies
 
 on:
   registry_package:
+    types: [published]
   workflow_dispatch:
-
-env:
-  GITHUB_TOKEN: ${{ secrets.PAT }}
 
 jobs:
   trigger:
@@ -22,6 +20,6 @@ jobs:
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: Publish
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.PUBLISH_TOKEN }}
           repo: ${{ matrix.repo }}
           ref: main
