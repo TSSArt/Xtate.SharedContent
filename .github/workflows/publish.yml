@@ -6,10 +6,10 @@ on:
   workflow_dispatch:
   
 env:
-  VERSION: ${{ vars.MM_VERSION }}.${{ github.run_number }}
+  VERSION: ${{ vars.XTATE_VERSION }}.${{ github.run_number }}
   CONFIGURATION: Release
 
-run-name: "[v${{ vars.MM_VERSION }}.${{ github.run_number }}] ${{ github.event.head_commit.message }}"
+run-name: "[v${{ vars.XTATE_VERSION }}.${{ github.run_number }}] ${{ github.event.head_commit.message || '(Wrorkflow Dispatch)' }}"
 
 jobs:
   publish:
@@ -40,6 +40,6 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         custom_tag : ${{ env.VERSION }}
     - name: Publish to NuGet.org
-      run: dotnet nuget push bin/packages/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_ORG_API_KEY }}
+      run: dotnet nuget push bin/packages/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_ORG_TOKEN }}
     - name: Publish to GitHub
-      run: dotnet nuget push bin/packages/*.nupkg -s https://nuget.pkg.github.com/TSSArt/index.json -k ${{ secrets.PUBLISH_TOKEN }}
+      run: dotnet nuget push bin/packages/*.nupkg -s https://nuget.pkg.github.com/TSSArt/index.json -k ${{ secrets.XTATE_GITHUB_TOKEN }}

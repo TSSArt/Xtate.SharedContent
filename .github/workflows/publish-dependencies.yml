@@ -7,11 +7,10 @@ on:
 
 jobs:
   trigger:
-    name: Publish ${{ matrix.repo }}
+    name: Build & Publish ${{ matrix.repo }}
     strategy:
       matrix:
-        repo: 
-          - TSSArt/Xtate.IoC
+        repo: ${{ vars.DEP_REPOS }}
     
     runs-on: ubuntu-latest
   
@@ -20,6 +19,6 @@ jobs:
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: Publish
-          token: ${{ secrets.PUBLISH_TOKEN }}
-          repo: ${{ matrix.repo }}
+          token: ${{ secrets.XTATE_GITHUB_TOKEN }}
+          repo: TSSArt/${{ matrix.repo }}
           ref: main
