@@ -18,19 +18,22 @@
 // ReSharper disable All
 // ReSharper disable InvalidXmlDocComment
 
-#if !NET8_OR_GREATER
+#if !NET8_0_OR_GREATER
 namespace System.Runtime.CompilerServices
 {
 	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Interface, Inherited = false)]
 	internal sealed class CollectionBuilderAttribute : Attribute
 	{
-		/// <summary>Initialize the attribute to refer to the <paramref name="methodName"/> method on the <paramref name="builderType"/> type.</summary>
+		/// <summary>
+		///     Initialize the attribute to refer to the <paramref name="methodName" /> method on the
+		///     <paramref name="builderType" /> type.
+		/// </summary>
 		/// <param name="builderType">The type of the builder to use to construct the collection.</param>
 		/// <param name="methodName">The name of the method on the builder to use to construct the collection.</param>
 		/// <remarks>
-		/// <paramref name="methodName"/> must refer to a static method that accepts a single parameter of
-		/// type <see cref="ReadOnlySpan{T}"/> and returns an instance of the collection being built containing
-		/// a copy of the data from that span.  In future releases of .NET, additional patterns may be supported.
+		///     <paramref name="methodName" /> must refer to a static method that accepts a single parameter of
+		///     type <see cref="ReadOnlySpan{T}" /> and returns an instance of the collection being built containing
+		///     a copy of the data from that span.  In future releases of .NET, additional patterns may be supported.
 		/// </remarks>
 		public CollectionBuilderAttribute(Type builderType, string methodName)
 		{
@@ -42,7 +45,10 @@ namespace System.Runtime.CompilerServices
 		public Type BuilderType { get; }
 
 		/// <summary>Gets the name of the method on the builder to use to construct the collection.</summary>
-		/// <remarks>This should match the metadata name of the target method. For example, this might be ".ctor" if targeting the type's constructor.</remarks>
+		/// <remarks>
+		///     This should match the metadata name of the target method. For example, this might be ".ctor" if targeting the
+		///     type's constructor.
+		/// </remarks>
 		public string MethodName { get; }
 	}
 }
