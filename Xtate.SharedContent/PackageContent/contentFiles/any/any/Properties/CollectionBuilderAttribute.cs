@@ -18,7 +18,12 @@
 // ReSharper disable All
 // ReSharper disable InvalidXmlDocComment
 
+#pragma warning disable IDE0079 // Remove unnecessary suppression
+#pragma warning disable IDE0005 // Using directive is unnecessary
+#pragma warning disable IDE0290 // Use primary constructor
+
 #if !NET8_0_OR_GREATER
+
 namespace System.Runtime.CompilerServices
 {
 	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Interface, Inherited = false)]
