@@ -23,6 +23,7 @@
 #pragma warning disable IDE0090 // Use 'new(...)'
 #pragma warning disable CS1591  // Missing XML comment for publicly visible type or member
 
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 
@@ -30,6 +31,7 @@ using JetBrains.Annotations;
 namespace System
 {
 	[UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
+	[ExcludeFromCodeCoverage]
 	internal readonly struct Index : IEquatable<Index>
 	{
 		private readonly int _value;
@@ -87,6 +89,7 @@ namespace System
 	}
 
 	[UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
+	[ExcludeFromCodeCoverage]
 	internal readonly struct Range : IEquatable<Range>
 	{
 		public Range(Index start, Index end)

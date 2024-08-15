@@ -22,6 +22,8 @@
 #pragma warning disable IDE0290 // Use primary constructor
 #pragma warning disable CS1591  // Missing XML comment for publicly visible type or member
 
+using System.Diagnostics.CodeAnalysis;
+
 #if !NET7_0_OR_GREATER
 namespace System.Runtime.CompilerServices
 {
@@ -29,6 +31,7 @@ namespace System.Runtime.CompilerServices
 	internal sealed class RequiredMemberAttribute : Attribute { }
 
 	[AttributeUsage(AttributeTargets.All, AllowMultiple = true, Inherited = false)]
+	[ExcludeFromCodeCoverage]
 	internal sealed class CompilerFeatureRequiredAttribute : Attribute
 	{
 		public CompilerFeatureRequiredAttribute(string featureName)

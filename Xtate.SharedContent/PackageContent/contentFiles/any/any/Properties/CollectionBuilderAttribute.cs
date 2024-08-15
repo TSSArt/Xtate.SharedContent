@@ -22,11 +22,14 @@
 #pragma warning disable IDE0005 // Using directive is unnecessary
 #pragma warning disable IDE0290 // Use primary constructor
 
+using System.Diagnostics.CodeAnalysis;
+
 #if !NET8_0_OR_GREATER
 
 namespace System.Runtime.CompilerServices
 {
 	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Interface, Inherited = false)]
+	[ExcludeFromCodeCoverage]
 	internal sealed class CollectionBuilderAttribute : Attribute
 	{
 		/// <summary>
