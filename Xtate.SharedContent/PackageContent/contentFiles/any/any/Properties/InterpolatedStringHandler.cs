@@ -23,6 +23,8 @@
 #pragma warning disable IDE0300 // Simplify collection initialization
 #pragma warning disable CS1591  // Missing XML comment for publicly visible type or member
 
+using System.Diagnostics.CodeAnalysis;
+
 #if !NET6_0_OR_GREATER
 namespace System.Runtime.CompilerServices
 {
@@ -30,6 +32,7 @@ namespace System.Runtime.CompilerServices
 	internal sealed class InterpolatedStringHandlerAttribute : Attribute { }
 
 	[AttributeUsage(AttributeTargets.Parameter)]
+	[ExcludeFromCodeCoverage]
 	internal sealed class InterpolatedStringHandlerArgumentAttribute : Attribute
 	{
 		public InterpolatedStringHandlerArgumentAttribute(string argument) => Arguments = new string[] { argument };
