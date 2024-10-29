@@ -315,7 +315,8 @@ namespace JetBrains.Annotations
 		public ValueRangeAttribute(ulong value) => From = To = value;
 
 		public object From { get; }
-		public object To   { get; }
+
+		public object To { get; }
 	}
 
 	/// <summary>
@@ -800,7 +801,8 @@ namespace JetBrains.Annotations
 	internal enum ImplicitUseTargetFlags
 	{
 		Default = Itself,
-		Itself  = 1,
+
+		Itself = 1,
 
 		/// <summary>Members of the type marked with the attribute are considered used.</summary>
 		Members = 2,
@@ -1313,11 +1315,15 @@ namespace JetBrains.Annotations
 	/// </summary>
 	internal enum InjectedLanguage
 	{
-		CSS        = 0,
-		HTML       = 1,
+		CSS = 0,
+
+		HTML = 1,
+
 		JAVASCRIPT = 2,
-		JSON       = 3,
-		XML        = 4
+
+		JSON = 3,
+
+		XML = 4
 	}
 
 	/// <summary>

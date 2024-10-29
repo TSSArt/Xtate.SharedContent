@@ -25,7 +25,6 @@
 using System.Diagnostics.CodeAnalysis;
 
 #if !NET8_0_OR_GREATER
-
 namespace System.Runtime.CompilerServices
 {
 	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Interface, Inherited = false)]
