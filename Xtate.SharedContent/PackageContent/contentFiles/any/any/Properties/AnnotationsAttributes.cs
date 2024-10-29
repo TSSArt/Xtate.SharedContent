@@ -672,7 +672,7 @@ namespace JetBrains.Annotations
 	/// 
 	/// public class SummaryData
 	/// {
-	///   [UsedImplicitly(ImplicitUseKindFlags.InstantiatedWithFixedConstructorSignature)]
+	///   
 	///   public SummaryData() {}
 	/// }
 	/// 
@@ -707,7 +707,7 @@ namespace JetBrains.Annotations
 		/// 
 		/// public class SummaryData
 		/// {
-		///   [UsedImplicitly(ImplicitUseKindFlags.InstantiatedWithFixedConstructorSignature)]
+		///   
 		///   public SummaryData() {}
 		/// }
 		/// 
