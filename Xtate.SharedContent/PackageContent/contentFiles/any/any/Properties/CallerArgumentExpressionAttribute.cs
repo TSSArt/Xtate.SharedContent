@@ -1,4 +1,4 @@
-﻿// Copyright © 2019-2024 Sergii Artemenko
+﻿// Copyright © 2019-2025 Sergii Artemenko
 // 
 // This file is part of the Xtate project. <https://xtate.net/>
 // 
@@ -29,17 +29,17 @@ using JetBrains.Annotations;
 #if !NETCOREAPP3_0_OR_GREATER
 namespace System.Runtime.CompilerServices
 {
-	[AttributeUsage(AttributeTargets.Parameter)]
-	[ExcludeFromCodeCoverage]
-	internal sealed class CallerArgumentExpressionAttribute : Attribute
-	{
-		public CallerArgumentExpressionAttribute(string parameterName)
-		{
-			ParameterName = parameterName;
-		}
+    [AttributeUsage(AttributeTargets.Parameter)]
+    [ExcludeFromCodeCoverage]
+    internal sealed class CallerArgumentExpressionAttribute : Attribute
+    {
+        public CallerArgumentExpressionAttribute(string parameterName)
+        {
+            ParameterName = parameterName;
+        }
 
-		[UsedImplicitly]
-		public string ParameterName { get; }
-	}
+        [UsedImplicitly]
+        public string ParameterName { get; }
+    }
 }
 #endif

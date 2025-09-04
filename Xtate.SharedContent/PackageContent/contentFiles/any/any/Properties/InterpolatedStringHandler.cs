@@ -1,4 +1,4 @@
-﻿// Copyright © 2019-2024 Sergii Artemenko
+﻿// Copyright © 2019-2025 Sergii Artemenko
 // 
 // This file is part of the Xtate project. <https://xtate.net/>
 // 
@@ -28,19 +28,19 @@ using System.Diagnostics.CodeAnalysis;
 #if !NET6_0_OR_GREATER
 namespace System.Runtime.CompilerServices
 {
-	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, Inherited = false)]
-	internal sealed class InterpolatedStringHandlerAttribute : Attribute { }
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, Inherited = false)]
+    internal sealed class InterpolatedStringHandlerAttribute : Attribute { }
 
-	[AttributeUsage(AttributeTargets.Parameter)]
-	[ExcludeFromCodeCoverage]
-	internal sealed class InterpolatedStringHandlerArgumentAttribute : Attribute
-	{
-		public InterpolatedStringHandlerArgumentAttribute(string argument) => Arguments = new string[] { argument };
+    [AttributeUsage(AttributeTargets.Parameter)]
+    [ExcludeFromCodeCoverage]
+    internal sealed class InterpolatedStringHandlerArgumentAttribute : Attribute
+    {
+        public InterpolatedStringHandlerArgumentAttribute(string argument) => Arguments = new string[] { argument };
 
-		public InterpolatedStringHandlerArgumentAttribute(params string[] arguments) => Arguments = arguments;
+        public InterpolatedStringHandlerArgumentAttribute(params string[] arguments) => Arguments = arguments;
 
-		public string[] Arguments { get; }
-	}
+        public string[] Arguments { get; }
+    }
 }
 
 #endif

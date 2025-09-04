@@ -1,4 +1,4 @@
-﻿// Copyright © 2019-2024 Sergii Artemenko
+﻿// Copyright © 2019-2025 Sergii Artemenko
 // 
 // This file is part of the Xtate project. <https://xtate.net/>
 // 
@@ -27,25 +27,25 @@ using System.Diagnostics.CodeAnalysis;
 #if !NET7_0_OR_GREATER
 namespace System.Runtime.CompilerServices
 {
-	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Field | AttributeTargets.Property)]
-	internal sealed class RequiredMemberAttribute : Attribute { }
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Field | AttributeTargets.Property)]
+    internal sealed class RequiredMemberAttribute : Attribute { }
 
-	[AttributeUsage(AttributeTargets.All, AllowMultiple = true, Inherited = false)]
-	[ExcludeFromCodeCoverage]
-	internal sealed class CompilerFeatureRequiredAttribute : Attribute
-	{
-		public CompilerFeatureRequiredAttribute(string featureName)
-		{
-			FeatureName = featureName;
-		}
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = true, Inherited = false)]
+    [ExcludeFromCodeCoverage]
+    internal sealed class CompilerFeatureRequiredAttribute : Attribute
+    {
+        public CompilerFeatureRequiredAttribute(string featureName)
+        {
+            FeatureName = featureName;
+        }
 
-		public string FeatureName { get; }
-	}
+        public string FeatureName { get; }
+    }
 }
 
 namespace System.Diagnostics.CodeAnalysis
 {
-	[AttributeUsage(AttributeTargets.Constructor)]
-	internal sealed class SetsRequiredMembersAttribute : Attribute { }
+    [AttributeUsage(AttributeTargets.Constructor)]
+    internal sealed class SetsRequiredMembersAttribute : Attribute { }
 }
 #endif
