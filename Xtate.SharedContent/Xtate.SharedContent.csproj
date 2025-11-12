@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<LangVersion>8</LangVersion>
-		<TargetFrameworks>net9.0;net8.0;netstandard2.0;net462</TargetFrameworks>
+		<TargetFrameworks>net10.0;net9.0;net8.0;netstandard2.0;net462</TargetFrameworks>
 		<RepositoryUrl>https://github.com/TSSArt/Xtate.SharedContent</RepositoryUrl>
 		<PackageId>Xtate.SharedContent</PackageId>
 		<NuspecFile>Xtate.SharedContent.nuspec</NuspecFile>
@@ -10,6 +10,6 @@
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)'=='net462'">
-		<PackageReference Include="System.ValueTuple" Version="4.6.1" />
+		<PackageReference Include="System.ValueTuple" />
 	</ItemGroup>
 </Project>
