@@ -2,12 +2,6 @@ name: Publish
 
 on:
   push:
-    branches:
-      - main
-      - develop
-      - feature/**
-      - hotfix/**
-      - support/**
     tags:
       - "v*"
   workflow_dispatch:
@@ -37,8 +31,7 @@ jobs:
       uses: actions/checkout@v5.0.0
       with:
         fetch-depth: 0
-    - name: Determine version (GitVersion)
-      id: gitversion
+    - name: Determine Version
       uses: gittools/actions/gitversion/execute@v4.2.0
     - name: Update version in .nuspec
       uses: vers-one/dotnet-project-version-updater@v1.7
@@ -51,7 +44,7 @@ jobs:
       run: dotnet build --configuration ${{ env.Configuration }} --no-restore -p:Version=${{ env.fullSemVer }}
     - name: Pack
       run: dotnet pack --configuration ${{ env.Configuration }} --no-restore --no-build -p:PackageVersion=${{ env.fullSemVer }} -o bin/packages
-#    - name: Publish to NuGet.org
-#      run: dotnet nuget push bin/packages/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_ORG_TOKEN }}
+    - name: Publish to NuGet.org
+      run: dotnet nuget push bin/packages/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_ORG_TOKEN }}
     - name: Publish to GitHub
       run: dotnet nuget push bin/packages/*.nupkg -s https://nuget.pkg.github.com/TSSArt/index.json -k ${{ secrets.XTATE_GITHUB_TOKEN }}
