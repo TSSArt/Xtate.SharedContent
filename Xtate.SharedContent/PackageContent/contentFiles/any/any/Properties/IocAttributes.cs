@@ -22,31 +22,31 @@ using System.Diagnostics;
 
 namespace JetBrains.Annotations
 {
-    /// <summary>
-    ///     Indicates that the decorated class is instantiated by the IoC container and prevents ReSharper warnings about
-    ///     unused classes. This attribute is intended solely for ReSharper and does not provide IoC functionality.
-    /// </summary>
-    [MeansImplicitUse(ImplicitUseTargetFlags.Itself)]
-    [AttributeUsage(AttributeTargets.Class, Inherited = false)]
-    [Conditional("JETBRAINS_ANNOTATIONS")]
-    internal sealed class InstantiatedByIoCAttribute : Attribute { }
+	/// <summary>
+	///     Indicates that the decorated class or struct is instantiated by the IoC container and prevents ReSharper warnings
+	///     about unused classes. This attribute is intended solely for ReSharper and does not provide IoC functionality.
+	/// </summary>
+	[MeansImplicitUse(ImplicitUseTargetFlags.Itself)]
+	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, Inherited = false)]
+	[Conditional("JETBRAINS_ANNOTATIONS")]
+	internal sealed class InstantiatedByIoCAttribute : Attribute { }
 
-    /// <summary>
-    ///     Indicates that the decorated method is called by the IoC container, and prevents ReSharper warnings about unused
-    ///     methods. This attribute is intended solely for ReSharper and does not provide IoC functionality.
-    /// </summary>
-    [MeansImplicitUse(ImplicitUseTargetFlags.Itself)]
-    [AttributeUsage(AttributeTargets.Method, Inherited = false)]
-    [Conditional("JETBRAINS_ANNOTATIONS")]
-    internal sealed class CalledByIoCAttribute : Attribute { }
+	/// <summary>
+	///     Indicates that the decorated method or constructor is called by the IoC container, and prevents ReSharper warnings
+	///     about unused methods. This attribute is intended solely for ReSharper and does not provide IoC functionality.
+	/// </summary>
+	[MeansImplicitUse(ImplicitUseTargetFlags.Itself)]
+	[AttributeUsage(AttributeTargets.Method | AttributeTargets.Constructor, Inherited = false)]
+	[Conditional("JETBRAINS_ANNOTATIONS")]
+	internal sealed class CalledByIoCAttribute : Attribute { }
 
-    /// <summary>
-    ///     Indicates that the decorated method is used by the IoC container to set a property, and prevents ReSharper warnings
-    ///     about unused methods or properties. This attribute is intended solely for ReSharper and does not provide IoC
-    ///     functionality.
-    /// </summary>
-    [MeansImplicitUse(ImplicitUseTargetFlags.Itself)]
-    [AttributeUsage(AttributeTargets.Method, Inherited = false)]
-    [Conditional("JETBRAINS_ANNOTATIONS")]
-    internal sealed class SetByIoCAttribute : Attribute { }
+	/// <summary>
+	///     Indicates that the decorated method, field, or property is used by the IoC container to set a property, and
+	///     prevents ReSharper warnings about unused methods or properties. This attribute is intended solely for ReSharper and
+	///     does not provide IoC functionality.
+	/// </summary>
+	[MeansImplicitUse(ImplicitUseTargetFlags.Itself)]
+	[AttributeUsage(AttributeTargets.Method | AttributeTargets.Field | AttributeTargets.Property, Inherited = false)]
+	[Conditional("JETBRAINS_ANNOTATIONS")]
+	internal sealed class SetByIoCAttribute : Attribute { }
 }
