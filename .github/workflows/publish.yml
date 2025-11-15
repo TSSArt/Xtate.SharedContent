@@ -2,7 +2,14 @@ name: Publish
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - develop
+      - feature/**
+      - hotfix/**
+      - support/**
+    tags:
+      - "v*"
   workflow_dispatch:
 
 env:
