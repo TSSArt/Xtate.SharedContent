@@ -16,23 +16,23 @@ concurrency:
 jobs:
   publish:
     name: Build & Publish
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v5.0.0
+      uses: actions/checkout@v6
       with:
         fetch-depth: 0
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v5.0.0
+      uses: actions/setup-dotnet@v5
       with:
-        dotnet-version: '10.0.x'
+        dotnet-version: '11.0.x'
     - name: Install GitVersion
-      uses: gittools/actions/gitversion/setup@v4.2.0
+      uses: gittools/actions/gitversion/setup@v4.5.0
       with:
         versionSpec: '6.5.x'
     - name: Determine Version
-      uses: gittools/actions/gitversion/execute@v4.2.0
+      uses: gittools/actions/gitversion/execute@v4.5.0
     - name: Update version in .nuspec
       uses: vers-one/dotnet-project-version-updater@v1.7
       with:
@@ -43,7 +43,7 @@ jobs:
     - name: Build
       run: dotnet build --configuration ${{ env.Configuration }} --no-restore -p:Version=${{ env.fullSemVer }}
     - name: Pack
-      run: dotnet pack --configuration ${{ env.Configuration }} --no-restore --no-build -p:PackageVersion=${{ env.fullSemVer }} -o bin/packages
+      run: dotnet pack --configuration ${{ env.Configuration }} --no-build -p:PackageVersion=${{ env.fullSemVer }} -o bin/packages
     - name: Publish to NuGet.org
       run: dotnet nuget push bin/packages/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_ORG_TOKEN }}
     - name: Publish to GitHub
