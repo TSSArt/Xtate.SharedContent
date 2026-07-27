@@ -21,6 +21,7 @@
 #pragma warning disable IDE0005 // Using directive is unnecessary
 #pragma warning disable IDE0290 // Use primary constructor
 #pragma warning disable IDE0090 // Use 'new(...)'
+#pragma warning disable IDE0048 // Non-obvious Precedenece
 #pragma warning disable CS1591  // Missing XML comment for publicly visible type or member
 
 using System.Diagnostics.CodeAnalysis;
